@@ -51,7 +51,7 @@ function SearchBar() {
 							style={{ cursor: 'pointer' }}
 							onClick={() => handleSelectCity(city)}
 						>
-							{city.LocalizedName}
+							{`${city.LocalizedName}, ${city.Country.LocalizedName}`}
 						</div>
 					))}
 				</div>
