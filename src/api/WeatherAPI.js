@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://dataservice.accuweather.com';
+const BASE_URL = 'https://dataservice.accuweather.com';
 const API_KEY = 'OfCI6lDNsXooUdoBYML16sS9XfxcJlV3';
 
 export const getSuggestions = (searchText) => {
