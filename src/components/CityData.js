@@ -3,27 +3,22 @@ import { useDispatch } from 'react-redux';
 import { addFavorite, removeFavorite } from '../store/actions';
 import { getCurrentWeather } from '../api/WeatherAPI';
 import { useSelector } from 'react-redux';
-import { addToLocalStorage } from '../helpers/dataHelpers';
+import { addToLocalStorage, isInFavorites } from '../helpers/dataHelpers';
 
 function CityData({ city }) {
 	const dispatch = useDispatch();
 	const favorites = useSelector((state) => state.favorites);
 	const [ currentWeather, setCurrentWeather ] = useState([]);
 	const cityKey = city.Key;
-	const isFavorite = favorites && favorites.filter((f) => f.Key === cityKey).length > 0;
+	const isFavorite = isInFavorites(cityKey, favorites);
 
 	const getData = async () => {
 		return await getCurrentWeather(cityKey);
 	};
 
-	useEffect(
-		() => {
-			if (cityKey) getData().then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
-		},
-		[ cityKey ]
-	);
-
-	if (!cityKey || currentWeather.length === 0) return null;
+	const setWeather = () => {
+		getData().then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
+	};
 
 	const handleAddToFavorites = () => {
 		dispatch(addFavorite(city));
@@ -34,6 +29,15 @@ function CityData({ city }) {
 		dispatch(removeFavorite(cityKey));
 		addToLocalStorage('favorites', [ ...favorites.filter((c) => c.Key !== cityKey) ]);
 	};
+
+	useEffect(
+		() => {
+			if (cityKey) setWeather();
+		},
+		[ cityKey ]
+	);
+
+	if (!cityKey || currentWeather.length === 0) return null;
 
 	return (
 		<div className="d-flex flex-column align-items-center p-4 w-100">

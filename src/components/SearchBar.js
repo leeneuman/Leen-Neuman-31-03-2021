@@ -12,10 +12,13 @@ function SearchBar() {
 		return await getSuggestions(searchText);
 	};
 
+	const setData = () => {
+		getData().then((res) => setHintData(res.data)).catch((err) => console.log(err));
+	};
+
 	useEffect(
 		() => {
-			if (searchText.length > 0 && /^[A-Za-z -]*$/.test(searchText))
-				getData().then((res) => setHintData(res.data)).catch((err) => console.log(err));
+			if (searchText.length > 0 && /^[A-Za-z -]*$/.test(searchText)) setData();
 		},
 		[ searchText ]
 	);

@@ -10,9 +10,13 @@ function FavoriteData({ city }) {
 		return await getCurrentWeather(cityKey);
 	};
 
+	const setWeather = async () => {
+		getData().then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
+	};
+
 	useEffect(
 		() => {
-			if (cityKey) getData().then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
+			if (cityKey) setWeather();
 		},
 		[ cityKey ]
 	);

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { updateCity } from '../store/actions';
 import CityData from './CityData';
 import Forcasts from './Forcasts';
+
 const DEFAULT_CITY_NAME = 'tel aviv';
 
 function City({ match }) {
@@ -13,18 +14,22 @@ function City({ match }) {
 	const cityKey = city.Key;
 	const cityNameFromRoute = match.params.name;
 
-	const setDefaultCity = async () => {
+	const getDefaultCity = async () => {
 		return await getSuggestions(DEFAULT_CITY_NAME);
 	};
 
-	const setCityFromRoute = async () => {
+	const getCityFromRoute = async () => {
 		return await getSuggestions(cityNameFromRoute);
+	};
+
+	const setCity = (func) => {
+		func().then((res) => dispatch(updateCity(res.data[0]))).catch((err) => alert(err));
 	};
 
 	useEffect(
 		() => {
 			if (!cityKey) {
-				setDefaultCity().then((res) => dispatch(updateCity(res.data[0]))).catch((err) => alert(err));
+				setCity(getDefaultCity);
 			}
 		},
 		[ cityKey ]
@@ -33,7 +38,7 @@ function City({ match }) {
 	useEffect(
 		() => {
 			if (cityNameFromRoute) {
-				setCityFromRoute().then((res) => dispatch(updateCity(res.data[0]))).catch((err) => alert(err));
+				setCity(getCityFromRoute);
 			}
 		},
 		[ cityNameFromRoute ]

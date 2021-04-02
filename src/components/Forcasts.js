@@ -9,9 +9,13 @@ function Forcasts({ cityKey }) {
 		return await getForcast(cityKey);
 	};
 
+	const setData = () => {
+		getData().then((res) => setForcasts(res.data)).catch((err) => alert(err));
+	};
+
 	useEffect(
 		() => {
-			if (cityKey) getData().then((res) => setForcasts(res.data)).catch((err) => alert(err));
+			if (cityKey) setData();
 		},
 		[ cityKey ]
 	);
