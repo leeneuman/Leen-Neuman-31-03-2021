@@ -39,17 +39,17 @@ function CityData({ city }) {
 		<div className="d-flex flex-column align-items-center p-4 w-100">
 			<div className="d-flex flex-row justify-content-between w-100">
 				<div className="d-flex flex-column">
-					<h5>{city.LocalizedName}</h5>
+					<h5>{`${city.LocalizedName}, ${city.Country.LocalizedName}`}</h5>
 					<span>{currentWeather.Temperature.Metric.Value} &#8451;</span>
 				</div>
 				<div>
-					{isFavorite ? <i className="fas fa-heart fa-lg p-2" /> : <i className="far fa-heart fa-lg p-2" />}
 					<button
 						className="btn btn-light"
 						onClick={isFavorite ? handleRemoveFromFavorites : handleAddToFavorites}
 					>
 						{isFavorite ? 'Remove from favorites' : 'Add to favorites'}
 					</button>
+					{isFavorite ? <i className="fas fa-heart fa-lg p-2" /> : <i className="far fa-heart fa-lg p-2" />}
 				</div>
 			</div>
 			<h3>{currentWeather.WeatherText}</h3>

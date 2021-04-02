@@ -6,7 +6,7 @@ function Favorites() {
 	const favorites = useSelector((state) => state.favorites);
 
 	return (
-		<div className="FavoritesContainer d-flex flex-row justify-content-between flex-wrap p-4 w-100">
+		<div className="FavoritesContainer d-flex flex-row flex-wrap p-4 w-100">
 			{favorites.map((city) => <FavoriteData key={city.Key} city={city} />)}
 		</div>
 	);

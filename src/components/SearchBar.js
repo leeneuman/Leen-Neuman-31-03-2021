@@ -27,6 +27,7 @@ function SearchBar() {
 	const handleSelectCity = (city) => {
 		dispatch(updateCity(city));
 		setHintData([]);
+		setSearchText('');
 	};
 
 	return (
