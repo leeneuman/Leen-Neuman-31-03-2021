@@ -45,7 +45,7 @@ function CityData({ city }) {
 				<div>
 					{isFavorite ? <i className="fas fa-heart fa-lg p-2" /> : <i className="far fa-heart fa-lg p-2" />}
 					<button
-						class="btn btn-light"
+						className="btn btn-light"
 						onClick={isFavorite ? handleRemoveFromFavorites : handleAddToFavorites}
 					>
 						{isFavorite ? 'Remove from favorites' : 'Add to favorites'}
