@@ -26,7 +26,7 @@ function FavoriteData({ city }) {
 			to={`/city/${city.LocalizedName}`}
 		>
 			<div className="d-flex flex-column align-items-center">
-				<h5>{`${city.LocalizedName}, ${city.Country.LocalizedName}`}</h5>
+				<h5>{city.LocalizedName}</h5>
 				<span>{currentWeather.Temperature.Metric.Value} &#8451;</span>
 			</div>
 
