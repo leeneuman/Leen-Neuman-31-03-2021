@@ -39,6 +39,8 @@ function City({ match }) {
 		[ cityNameFromRoute ]
 	);
 
+	if (city.length === 0 && !cityKey) return null;
+
 	return (
 		<div
 			className="d-flex flex-column align-items-center p-4 mt-5 w-100 card"
