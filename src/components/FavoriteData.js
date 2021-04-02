@@ -21,12 +21,12 @@ function FavoriteData({ city }) {
 
 	return (
 		<Link
-			className="d-flex flex-column align-items-center card p-4 mt-4 justify-content-between text-decoration-none text-reset"
+			className="d-flex flex-column align-items-center card p-4 mt-4 justify-content-between text-decoration-none text-reset text-center"
 			style={{ height: '200px', width: '200px' }}
 			to={`/city/${city.LocalizedName}`}
 		>
 			<div className="d-flex flex-column align-items-center">
-				<span>{city.LocalizedName}</span>
+				<h5>{city.LocalizedName}</h5>
 				<span>{currentWeather.Temperature.Metric.Value}&#8451;</span>
 			</div>
 
