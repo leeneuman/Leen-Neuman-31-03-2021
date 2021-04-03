@@ -8,7 +8,6 @@ function Routes() {
 		<div className="container">
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/city/:name" component={Home} />
 				<Route exact path="/favorites" component={Favorites} />
 				<Redirect to="/" />
 			</Switch>

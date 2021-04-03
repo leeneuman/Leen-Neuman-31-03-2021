@@ -2,6 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateUnits } from '../store/actions';
 
+const Button = ({ label, onClick }) => {
+	return (
+		<button className="dropdown-item" type="button" onClick={onClick}>
+			{label}
+		</button>
+	);
+};
+
 function UnitSwitch() {
 	const dispatch = useDispatch();
 
@@ -10,9 +18,9 @@ function UnitSwitch() {
 	};
 
 	return (
-		<div class="dropdown">
+		<div className="dropdown">
 			<button
-				class="btn btn-secondary dropdown-toggle"
+				className="btn btn-secondary dropdown-toggle"
 				type="button"
 				id="dropdownMenu2"
 				data-toggle="dropdown"
@@ -21,13 +29,9 @@ function UnitSwitch() {
 			>
 				Units
 			</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-				<button class="dropdown-item" type="button" onClick={() => setUnits('Metric')}>
-					Metric
-				</button>
-				<button class="dropdown-item" type="button" onClick={() => setUnits('Imperial')}>
-					Imperial
-				</button>
+			<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+				<Button label="Metric" onClick={() => setUnits('Metric')} />
+				<Button label="Imperial" onClick={() => setUnits('Imperial')} />
 			</div>
 		</div>
 	);

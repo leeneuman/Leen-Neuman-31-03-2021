@@ -8,12 +8,8 @@ function SearchBar() {
 	const [ searchText, setSearchText ] = useState('');
 	const [ hintData, setHintData ] = useState([]);
 
-	const getData = async () => {
-		return await getSuggestions(searchText);
-	};
-
 	const setData = () => {
-		getData().then((res) => setHintData(res.data)).catch((err) => console.log(err));
+		return getSuggestions(searchText).then((res) => setHintData(res.data)).catch((err) => console.log(err));
 	};
 
 	useEffect(

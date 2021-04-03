@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { getCurrentWeather } from '../../api/WeatherAPI';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getCurrentWeather } from '../../api/WeatherAPI';
+import { updateCity } from '../../store/actions';
 import TempretureText from '../TemperatureText';
 
 function FavoriteData({ city }) {
+	const dispatch = useDispatch();
 	const cityKey = city.Key;
 	const [ currentWeather, setCurrentWeather ] = useState([]);
 
-	const getData = async () => {
-		return await getCurrentWeather(cityKey);
+	const setWeather = () => {
+		return getCurrentWeather(cityKey).then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
 	};
 
-	const setWeather = async () => {
-		getData().then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
+	const handleSelectCity = () => {
+		dispatch(updateCity(city));
 	};
 
 	useEffect(
@@ -28,7 +31,8 @@ function FavoriteData({ city }) {
 		<Link
 			className="d-flex flex-column align-items-center card p-4 mt-4 mr-4 justify-content-between text-decoration-none text-reset text-center"
 			style={{ height: '200px', width: '200px' }}
-			to={`/city/${city.LocalizedName}`}
+			onClick={handleSelectCity}
+			to="/"
 		>
 			<div className="d-flex flex-column align-items-center">
 				<h5>{city.LocalizedName}</h5>

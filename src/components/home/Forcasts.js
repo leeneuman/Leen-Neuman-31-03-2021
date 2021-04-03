@@ -7,12 +7,8 @@ function Forcasts({ cityKey }) {
 	const units = useSelector((state) => state.units);
 	const [ forcasts, setForcasts ] = useState([]);
 
-	const getData = async () => {
-		return await getForcast(cityKey, units === 'Metric');
-	};
-
 	const setData = () => {
-		getData().then((res) => setForcasts(res.data)).catch((err) => alert(err));
+		return getForcast(cityKey, units === 'Metric').then((res) => setForcasts(res.data)).catch((err) => alert(err));
 	};
 
 	useEffect(

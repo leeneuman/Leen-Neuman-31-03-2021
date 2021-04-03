@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/actions';
 import { getCurrentWeather } from '../../api/WeatherAPI';
-import { useSelector } from 'react-redux';
 import { addToLocalStorage, isInFavorites } from '../../helpers/dataHelpers';
 import TempretureText from '../TemperatureText';
 
@@ -13,12 +12,8 @@ function CityData({ city }) {
 	const cityKey = city.Key;
 	const isFavorite = isInFavorites(cityKey, favorites);
 
-	const getData = async () => {
-		return await getCurrentWeather(cityKey);
-	};
-
 	const setWeather = () => {
-		getData().then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
+		return getCurrentWeather(cityKey).then((res) => setCurrentWeather(res.data[0])).catch((err) => alert(err));
 	};
 
 	const handleAddToFavorites = () => {
