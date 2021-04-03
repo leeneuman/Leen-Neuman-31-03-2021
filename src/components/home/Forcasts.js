@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getForcast } from '../../api/WeatherAPI';
+import { useSelector } from 'react-redux';
 import Forcast from './Forcast';
 
 function Forcasts({ cityKey }) {
+	const units = useSelector((state) => state.units);
 	const [ forcasts, setForcasts ] = useState([]);
 
 	const getData = async () => {
-		return await getForcast(cityKey);
+		return await getForcast(cityKey, units !== 'Metric');
 	};
 
 	const setData = () => {

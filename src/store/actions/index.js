@@ -24,3 +24,12 @@ export const updateCity = (city) => {
 		}
 	};
 };
+
+export const updateUnits = (units) => {
+	return {
+		type: 'UPDATE_UNITS',
+		payload: {
+			units
+		}
+	};
+};

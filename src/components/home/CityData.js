@@ -4,6 +4,7 @@ import { addFavorite, removeFavorite } from '../../store/actions';
 import { getCurrentWeather } from '../../api/WeatherAPI';
 import { useSelector } from 'react-redux';
 import { addToLocalStorage, isInFavorites } from '../../helpers/dataHelpers';
+import TempretureText from '../TemperatureText';
 
 function CityData({ city }) {
 	const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function CityData({ city }) {
 			<div className="d-flex flex-row justify-content-between w-100">
 				<div className="d-flex flex-column">
 					<h5>{`${city.LocalizedName}, ${city.Country.LocalizedName}`}</h5>
-					<span>{currentWeather.Temperature.Metric.Value} &#8451;</span>
+					<TempretureText type="current" data={currentWeather} />
 				</div>
 				<div>
 					<button

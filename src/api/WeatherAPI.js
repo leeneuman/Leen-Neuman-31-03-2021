@@ -1,6 +1,7 @@
 import axios from 'axios';
 const BASE_URL = 'https://dataservice.accuweather.com';
-const API_KEY = 'Aea3uS7CS2qPaptAhcLNOFoL72G9IsPb';
+const API_KEY = '3QtNaCFlNvFPE2vCYQ8nMh5C04bTGrjC';
+// const API_KEY = 'KpvPAsNLBJJKYWnDQmnsLAjHvQ1c1jKU';
 
 export const getSuggestions = (searchText) => {
 	return axios.get(`${BASE_URL}/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchText}`, {
@@ -14,8 +15,8 @@ export const getCurrentWeather = (id) => {
 	});
 };
 
-export const getForcast = (id) => {
-	return axios.get(`${BASE_URL}/forecasts/v1/daily/5day/${id}?apikey=${API_KEY}&metric=true`, {
+export const getForcast = (id, metric = true) => {
+	return axios.get(`${BASE_URL}/forecasts/v1/daily/5day/${id}?apikey=${API_KEY}&metric=${metric}`, {
 		headers: { Accept: 'application/json' }
 	});
 };

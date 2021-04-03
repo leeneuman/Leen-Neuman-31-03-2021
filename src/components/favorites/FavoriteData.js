@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getCurrentWeather } from '../../api/WeatherAPI';
 import { Link } from 'react-router-dom';
+import TempretureText from '../TemperatureText';
 
 function FavoriteData({ city }) {
 	const cityKey = city.Key;
@@ -31,7 +32,7 @@ function FavoriteData({ city }) {
 		>
 			<div className="d-flex flex-column align-items-center">
 				<h5>{city.LocalizedName}</h5>
-				<span>{currentWeather.Temperature.Metric.Value} &#8451;</span>
+				<TempretureText type="current" data={currentWeather} />
 			</div>
 
 			<h4>{currentWeather.WeatherText}</h4>
