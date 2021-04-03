@@ -12,6 +12,7 @@
 		"jquery": "^3.6.0",
 		"popper.js": "^1.16.1",
 		"react": "^17.0.2",
+		"react-autocomplete": "^1.8.1",
 		"react-dom": "^17.0.2",
 		"react-redux": "^7.2.3",
 		"react-router-dom": "^5.2.0",
@@ -27,11 +28,22 @@
 		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
-		"extends": [ "react-app", "react-app/jest" ]
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
 	},
 	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"devDependencies": {
 		"babel-eslint": "^10.1.0",

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateCity } from '../../store/actions';
 import { getSuggestions } from '../../api/WeatherAPI';
+import Autocomplete from 'react-autocomplete';
 
 function SearchBar() {
 	const dispatch = useDispatch();
@@ -23,39 +24,32 @@ function SearchBar() {
 		setSearchText(event.target.value);
 	};
 
-	const handleSelectCity = (city) => {
+	const handleSelectCity = (cityName) => {
+		const city = hintData.find((c) => c.LocalizedName === cityName);
+
 		dispatch(updateCity(city));
 		setHintData([]);
 		setSearchText('');
 	};
 
-	return (
-		<div className="w-50 position-relative">
-			<input
-				className="SearchBar-input w-100 mt-5"
-				type="text"
-				value={searchText}
-				onChange={handleChange}
-				placeholder="Search for a city name..."
-				title="English characters only."
-			/>
+	const style = { width: '100%', marginTop: '3rem' };
 
-			{searchText.length > 0 &&
-			hintData.length > 0 && (
-				<div className="position-absolute w-100 bg-white border" style={{ zIndex: '1' }}>
-					{(hintData || []).map((city) => (
-						<div
-							className="p-1"
-							key={city.Key}
-							style={{ cursor: 'pointer' }}
-							onClick={() => handleSelectCity(city)}
-						>
-							{`${city.LocalizedName}, ${city.Country.LocalizedName}`}
-						</div>
-					))}
-				</div>
+	return (
+		<Autocomplete
+			wrapperStyle={{ width: '50%', zIndex: '1' }}
+			inputProps={{ style }}
+			getItemValue={(item) => item.LocalizedName}
+			items={hintData}
+			renderItem={(item, isHighlighted) => (
+				<div
+					key={item.Key}
+					style={{ background: isHighlighted ? 'lightgray' : 'white' }}
+				>{`${item.LocalizedName}, ${item.Country.LocalizedName}`}</div>
 			)}
-		</div>
+			value={searchText}
+			onChange={handleChange}
+			onSelect={handleSelectCity}
+		/>
 	);
 }
 
