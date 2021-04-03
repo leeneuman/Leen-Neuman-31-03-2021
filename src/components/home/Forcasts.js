@@ -8,7 +8,7 @@ function Forcasts({ cityKey }) {
 	const [ forcasts, setForcasts ] = useState([]);
 
 	const getData = async () => {
-		return await getForcast(cityKey, units !== 'Metric');
+		return await getForcast(cityKey, units === 'Metric');
 	};
 
 	const setData = () => {
@@ -19,7 +19,7 @@ function Forcasts({ cityKey }) {
 		() => {
 			if (cityKey) setData();
 		},
-		[ cityKey ]
+		[ cityKey, units ]
 	);
 
 	if (!cityKey || forcasts.length === 0) return null;
