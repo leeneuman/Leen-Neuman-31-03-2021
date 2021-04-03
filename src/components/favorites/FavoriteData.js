@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCurrentWeather } from '../api/WeatherAPI';
+import { getCurrentWeather } from '../../api/WeatherAPI';
 import { Link } from 'react-router-dom';
 
 function FavoriteData({ city }) {

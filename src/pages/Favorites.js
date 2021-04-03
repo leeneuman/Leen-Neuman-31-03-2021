@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import FavoriteData from '../components/FavoriteData';
+import FavoriteData from '../components/favorites/FavoriteData';
 
 function Favorites() {
 	const favorites = useSelector((state) => state.favorites);

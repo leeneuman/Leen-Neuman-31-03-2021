@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addFavorite, removeFavorite } from '../store/actions';
-import { getCurrentWeather } from '../api/WeatherAPI';
+import { addFavorite, removeFavorite } from '../../store/actions';
+import { getCurrentWeather } from '../../api/WeatherAPI';
 import { useSelector } from 'react-redux';
-import { addToLocalStorage, isInFavorites } from '../helpers/dataHelpers';
+import { addToLocalStorage, isInFavorites } from '../../helpers/dataHelpers';
 
 function CityData({ city }) {
 	const dispatch = useDispatch();

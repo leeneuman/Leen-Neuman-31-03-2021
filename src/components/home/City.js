@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getSuggestions } from '../api/WeatherAPI';
+import { getSuggestions } from '../../api/WeatherAPI';
 import { useDispatch } from 'react-redux';
-import { updateCity } from '../store/actions';
+import { updateCity } from '../../store/actions';
 import CityData from './CityData';
 import Forcasts from './Forcasts';
 

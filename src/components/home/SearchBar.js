@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateCity } from '../store/actions';
-import { getSuggestions } from '../api/WeatherAPI';
+import { updateCity } from '../../store/actions';
+import { getSuggestions } from '../../api/WeatherAPI';
 
 function SearchBar() {
 	const dispatch = useDispatch();

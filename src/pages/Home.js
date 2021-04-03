@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import City from '../components/City';
+import SearchBar from '../components/home/SearchBar';
+import City from '../components/home/City';
 
 function Home({ match }) {
 	return (
